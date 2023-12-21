@@ -21,23 +21,13 @@ The project repository is organized as follows:
 - Create features set (X) DataFrame from the remaining columns.
 - Split the data into training and testing datasets using `train_test_split`.
 
-## Create a Logistic Regression Model with the Original Data
+## Create a Logistic Regression Model with both the Original and Resampled Data
 
 - Fit a logistic regression model using the training data (X_train and y_train).
 - Save predictions for the testing data labels using the testing feature data (X_test) and the fitted model.
 - Evaluate the model’s performance:
   - Generate a confusion matrix.
   - Print the classification report.
-
-### Model Performance
-
-- Accuracy Score: [Provide the accuracy score]
-- Precision Score: [Provide the precision score]
-- Recall Score: [Provide the recall score]
-
-**Question:** How well does the logistic regression model predict both the 0 (healthy loan) and 1 (high-risk loan) labels?
-
-See credit_risk_classification file.
 
 ## Credit Risk Analysis Report
 
@@ -111,6 +101,8 @@ The F1-score provides a balance between precision and recall. While both models 
 
 The second model has perfect precision and recall for class 0, indicating that it correctly identifies all instances of class 0 without any false positives or false negatives. The first model, while also performing well, has a slightly lower recall for class 0 (0.99).
 
-Considering these factors, the second model appears to perform slightly better overall, especially in terms of F1-score and precision-recall balance.
+Considering these factors, the second model appears to perform slightly better overall, especially in terms of F1-score and precision-recall balance. 
+
+It's also worth noting that it's more important to predict the 1's, further justifying the use of Model 2 over Model 1.
 
 
