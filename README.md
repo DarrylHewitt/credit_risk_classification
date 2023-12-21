@@ -37,47 +37,80 @@ The project repository is organized as follows:
 
 **Question:** How well does the logistic regression model predict both the 0 (healthy loan) and 1 (high-risk loan) labels?
 
-[Answer the question here]
+See credit_risk_classification file.
 
 ## Credit Risk Analysis Report
 
 ### An Overview of the Analysis
 
-In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
+The objective of this analysis is to employ different methods to develop and assess a model for predicting loan risk. The task involves utilizing a dataset containing past lending transactions from a peer-to-peer lending services company. The goal is to create a model capable of determining the healthiness of a loan based on historical lending activity.
 
-* Explain the purpose of the analysis.
-* Explain what financial information the data was on, and what you needed to predict.
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
-* Describe the stages of the machine learning process you went through as part of this analysis.
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any resampling method).
+The financial data includes: 
+
+* loan_size: The amount of the loan requested by the borrower.
+* interest_rate: The interest rate associated with the loan.
+* borrower_income: The income of the borrower.
+* debt_to_income: The ratio of the borrower's debt to their income.
+* num_of_accounts: The number of accounts the borrower has.
+* derogatory_marks: The number of derogatory marks on the borrower's credit history.
+* total_debt: The total debt of the borrower.
+* loan_status: Indicates the status of the loan (i.e. Whether it is healthy or not).
+
+The dataset was separated into labels and features and the data dplit into training and testing sets. A logistic regression model was instantiated and fit to the training data before predictions were made on the testing data. 
+
+A balanced accuracy score was created and a confusion matrix produced to evaluate the model performance. Finally, a classification report was generated which included precision, accuracy and an F1-score. 
+
+All of the above was then repeated on another logistic regression model after random oversampling was applied to balance the class distribution in the training data.
 
 ### Results
 
-Using bulleted lists, describe the balanced accuracy scores and the precision and recall scores of all machine learning models.
+Results are broken down into accuracy, precision and recall as produced in the classification report mentioned above. 
 
-* Machine Learning Model 1:
-  * Description of Model 1 Accuracy, Precision, and Recall scores.
-  
-- **Accuracy Score:** [Provide insights into the accuracy]
-- **Precision Score:** [Provide insights into the precision]
-- **Recall Score:** [Provide insights into the recall]
+**Accurary** is understood as the proportion of correctly predicted instances (both true positives and true negatives) out of the total instances.
+**Precision** is the ratio of correctly predicted positive observations to the total predicted positives.
+**Recall** (Sensitivity or True Positive Rate) is the ratio of correctly predicted positive observations to the all observations in the actual class.
 
-* Machine Learning Model 2:
-  * Description of Model 2 Accuracy, Precision, and Recall scores.
+* Machine Learning Model 1 (original data):
 
-- **Accuracy Score:** [Provide insights into the accuracy]
-- **Precision Score:** [Provide insights into the precision]
-- **Recall Score:** [Provide insights into the recall]
+- **Accuracy Score:**
+
+The overall accuracy of the model is 99%, which is the proportion of correctly predicted instances (both true positives and true negatives) out of the total instances.
+
+- **Precision Score:**
+
+For class 0: Precision is 1.00, indicating that all predicted positive instances for class 0 were correct.
+For class 1: Precision is 0.87, meaning that 87% of the predicted positive instances for class 1 were correct.
+
+- **Recall Score:**
+
+For class 0: Recall is 1.00, indicating that the model correctly identified all actual instances of class 0.
+For class 1: Recall is 0.89, meaning that the model captured 89% of the actual instances of class 1.
+
+
+* Machine Learning Model 2 (resampled data):
+
+- **Accuracy Score:**
+
+The overall accuracy of the model is 100%, suggesting that all instances were correctly classified.
+
+- **Precision Score:**
+
+For class 0: Precision is 1.00, indicating that all predicted positive instances for class 0 were correct.
+For class 1: Precision is 0.87, meaning that 87% of the predicted positive instances for class 1 were correct.
+
+- **Recall Score:**
+
+For class 0: Recall is 1.00, indicating that the model correctly identified all actual instances of class 0.
+For class 1: Recall is also 1.00, suggesting that the model captured all actual instances of class 1.
 
 ### Summary
 
-Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
-* Which one seems to perform best? How do you know it performs best?
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
+Both models have a very high accuracy. The first model has an accuracy of 99%, while the second model has an accuracy of 100%. Based on overall accuracy alone, the second model appears to perform slightly better.
 
-If you don’t recommend the model, justify your reasoning.
+The F1-score provides a balance between precision and recall. While both models have high F1-scores, the second model has a higher F1-score for class 1 (0.93) compared to the first model (0.88). This indicates better performance in capturing true positives for class 1 in the second model.
 
-## Conclusion
+The second model has perfect precision and recall for class 0, indicating that it correctly identifies all instances of class 0 without any false positives or false negatives. The first model, while also performing well, has a slightly lower recall for class 0 (0.99).
 
-Include any concluding remarks, future considerations, or potential improvements for the model.
+Considering these factors, the second model appears to perform slightly better overall, especially in terms of F1-score and precision-recall balance.
+
 
